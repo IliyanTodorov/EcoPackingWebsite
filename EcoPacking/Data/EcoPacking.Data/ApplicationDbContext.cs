@@ -24,7 +24,29 @@
         {
         }
 
-        public DbSet<Setting> Settings { get; set; }
+        public DbSet<Address> Addresses { get; set; }
+
+        public DbSet<Cart> Carts { get; set; }
+
+        public DbSet<Category> Categories { get; set; }
+
+        public DbSet<CustomerOrder> CustomerOrders { get; set; }
+
+        public DbSet<DiscountCode> DiscountCodes { get; set; }
+
+        public DbSet<Image> Images { get; set; }
+
+        public DbSet<Order> Orders { get; set; }
+
+        public DbSet<OrderStatus> OrderStatuses { get; set; }
+
+        public DbSet<PaymentMethod> PaymentMethods { get; set; }
+
+        public DbSet<Product> Products { get; set; }
+
+        public DbSet<Review> Reviews { get; set; }
+
+        public DbSet<ShippingAddress> ShippingAddresses { get; set; }
 
         public override int SaveChanges() => this.SaveChanges(true);
 
@@ -47,6 +69,9 @@
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            builder.Entity<CustomerOrder>()
+                .HasKey(co => new { co.ApplicationUserId, co.OrderId });
+
             // Needed for Identity models configuration
             base.OnModelCreating(builder);
 

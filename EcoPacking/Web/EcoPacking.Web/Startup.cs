@@ -8,7 +8,6 @@
     using EcoPacking.Data.Models;
     using EcoPacking.Data.Repositories;
     using EcoPacking.Data.Seeding;
-    using EcoPacking.Services.Data;
     using EcoPacking.Services.Mapping;
     using EcoPacking.Services.Messaging;
     using EcoPacking.Web.ViewModels;
@@ -63,7 +62,6 @@
 
             // Application services
             services.AddTransient<IEmailSender, NullMessageSender>();
-            services.AddTransient<ISettingsService, SettingsService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
