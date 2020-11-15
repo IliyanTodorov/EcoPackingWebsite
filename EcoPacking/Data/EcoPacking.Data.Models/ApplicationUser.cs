@@ -3,7 +3,7 @@ namespace EcoPacking.Data.Models
 {
     using System;
     using System.Collections.Generic;
-
+    using System.ComponentModel.DataAnnotations.Schema;
     using EcoPacking.Data.Common.Models;
 
     using Microsoft.AspNetCore.Identity;
@@ -16,6 +16,8 @@ namespace EcoPacking.Data.Models
             this.Roles = new HashSet<IdentityUserRole<string>>();
             this.Claims = new HashSet<IdentityUserClaim<string>>();
             this.Logins = new HashSet<IdentityUserLogin<string>>();
+            this.Orders = new HashSet<Order>();
+            this.Reviews = new HashSet<Review>();
         }
 
         public string FirstName { get; set; }
@@ -30,9 +32,19 @@ namespace EcoPacking.Data.Models
 
         public string Gender { get; set; }
 
-        public int AddressId { get; set; }
+        [ForeignKey(nameof(Address))]
+        public int? AddressId { get; set; }
 
         public virtual Address Address { get; set; }
+
+        [ForeignKey(nameof(Cart))]
+        public int CartId { get; set; }
+
+        public Cart Cart { get; set; }
+
+        public virtual ICollection<Order> Orders { get; set; }
+
+        public virtual ICollection<Review> Reviews { get; set; }
 
         // Audit info
         public DateTime CreatedOn { get; set; }

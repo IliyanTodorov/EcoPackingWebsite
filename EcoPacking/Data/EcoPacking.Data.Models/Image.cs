@@ -1,17 +1,23 @@
 ﻿namespace EcoPacking.Data.Models
 {
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+
     using EcoPacking.Data.Common.Models;
 
     public class Image : BaseDeletableModel<int>
     {
+        [Required]
         public string Extention { get; set; }
 
-        public string ApplicationUserId { get; set; }
+        [ForeignKey(nameof(User))]
+        public string UserId { get; set; }
 
-        public ApplicationUser ApplicationUser { get; set; }
+        public virtual ApplicationUser User { get; set; }
 
-        public int ProductId { get; set; }
+        [ForeignKey(nameof(Product))]
+        public int? ProductId { get; set; }
 
-        public Product Product { get; set; }
+        public virtual Product Product { get; set; }
     }
 }

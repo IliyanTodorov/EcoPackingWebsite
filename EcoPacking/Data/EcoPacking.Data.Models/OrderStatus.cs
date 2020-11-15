@@ -1,9 +1,9 @@
 ﻿namespace EcoPacking.Data.Models
 {
-    using EcoPacking.Data.Common.Models;
-
-    public class OrderStatus : BaseDeletableModel<int>
+    public enum OrderStatus
     {
-        public string Name { get; set; }
+        Progress = 1,
+        OnShipping = 2,
+        Finished = 3,
     }
 }

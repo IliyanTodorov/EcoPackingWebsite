@@ -1,9 +1,11 @@
 ﻿namespace EcoPacking.Data.Models
 {
-    using EcoPacking.Data.Common.Models;
-
-    public class PaymentMethod : BaseDeletableModel<int>
+    public enum PaymentMethod
     {
-        public string Name { get; set; }
+        Check = 1,
+        BankTransfer = 2,
+        Cash = 3,
+        Paypal = 4,
+        Payoneer = 5,
     }
 }

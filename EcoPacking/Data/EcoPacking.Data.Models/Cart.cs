@@ -1,22 +1,29 @@
 ﻿namespace EcoPacking.Data.Models
 {
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
-    public class Cart
+    using EcoPacking.Data.Common.Models;
+
+    public class Cart : BaseDeletableModel<int>
     {
         public Cart()
         {
             this.Products = new HashSet<Product>();
         }
 
-        public int Id { get; set; }
+        [ForeignKey(nameof(DiscountCode))]
+        public int? DiscountCodeId { get; set; }
 
-        public ICollection<Product> Products { get; set; }
+        public virtual DiscountCode DiscountCode { get; set; }
 
-        public decimal TotalPrice { get; set; }
+        [Required]
+        [ForeignKey(nameof(User))]
+        public string UserId { get; set; }
 
-        public int DiscountCodeId { get; set; }
+        public virtual ApplicationUser User { get; set; }
 
-        public DiscountCode DiscountCode { get; set; }
+        public virtual ICollection<Product> Products { get; set; }
     }
 }
