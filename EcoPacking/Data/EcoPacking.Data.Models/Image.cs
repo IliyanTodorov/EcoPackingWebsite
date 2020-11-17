@@ -1,12 +1,18 @@
 ﻿namespace EcoPacking.Data.Models
 {
+    using System;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
     using EcoPacking.Data.Common.Models;
 
-    public class Image : BaseDeletableModel<int>
+    public class Image : BaseModel<string>
     {
+        public Image()
+        {
+            this.Id = Guid.NewGuid().ToString();
+        }
+
         [Required]
         public string Extention { get; set; }
 

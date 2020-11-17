@@ -127,8 +127,6 @@ namespace EcoPacking.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CreatedOn = table.Column<DateTime>(nullable: false),
                     ModifiedOn = table.Column<DateTime>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    DeletedOn = table.Column<DateTime>(nullable: true),
                     FirstName = table.Column<string>(maxLength: 15, nullable: false),
                     LastName = table.Column<string>(maxLength: 15, nullable: false),
                     Country = table.Column<string>(nullable: false),
@@ -354,12 +352,9 @@ namespace EcoPacking.Data.Migrations
                 name: "Images",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<string>(nullable: false),
                     CreatedOn = table.Column<DateTime>(nullable: false),
                     ModifiedOn = table.Column<DateTime>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    DeletedOn = table.Column<DateTime>(nullable: true),
                     Extention = table.Column<string>(nullable: false),
                     UserId = table.Column<string>(nullable: true),
                     ProductId = table.Column<int>(nullable: true)
@@ -413,11 +408,6 @@ namespace EcoPacking.Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Addresses_IsDeleted",
-                table: "Addresses",
-                column: "IsDeleted");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Addresses_UserId",
@@ -500,11 +490,6 @@ namespace EcoPacking.Data.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_DiscountCodes_IsDeleted",
                 table: "DiscountCodes",
-                column: "IsDeleted");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Images_IsDeleted",
-                table: "Images",
                 column: "IsDeleted");
 
             migrationBuilder.CreateIndex(

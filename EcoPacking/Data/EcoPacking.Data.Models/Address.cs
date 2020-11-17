@@ -5,7 +5,7 @@
 
     using EcoPacking.Data.Common.Models;
 
-    public class Address : BaseDeletableModel<int>
+    public class Address : BaseModel<int>
     {
         [Required]
         [MinLength(2)]
