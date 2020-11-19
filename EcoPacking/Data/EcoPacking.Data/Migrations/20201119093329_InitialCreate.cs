@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace EcoPacking.Data.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -44,12 +44,12 @@ namespace EcoPacking.Data.Migrations
                     LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
                     LockoutEnabled = table.Column<bool>(nullable: false),
                     AccessFailedCount = table.Column<int>(nullable: false),
-                    FirstName = table.Column<string>(nullable: true),
+                    FirstName = table.Column<string>(nullable: false),
                     MiddleName = table.Column<string>(nullable: true),
-                    LastName = table.Column<string>(nullable: true),
+                    LastName = table.Column<string>(nullable: false),
                     Alias = table.Column<string>(nullable: true),
                     Birthday = table.Column<DateTime>(nullable: false),
-                    Gender = table.Column<string>(nullable: true),
+                    Gender = table.Column<int>(nullable: true),
                     AddressId = table.Column<int>(nullable: true),
                     CartId = table.Column<int>(nullable: false),
                     CreatedOn = table.Column<DateTime>(nullable: false),
@@ -309,7 +309,7 @@ namespace EcoPacking.Data.Migrations
                     IsDeleted = table.Column<bool>(nullable: false),
                     DeletedOn = table.Column<DateTime>(nullable: true),
                     Name = table.Column<string>(nullable: false),
-                    Color = table.Column<string>(nullable: false),
+                    Color = table.Column<string>(nullable: true),
                     Size = table.Column<string>(nullable: false),
                     UnitPrice = table.Column<decimal>(nullable: false),
                     UnitsInStock = table.Column<int>(nullable: false),

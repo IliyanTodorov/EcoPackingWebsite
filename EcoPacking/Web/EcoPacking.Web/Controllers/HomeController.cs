@@ -13,7 +13,12 @@
             return this.View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult ShopGrid()
+        {
+            return this.View();
+        }
+
+        public IActionResult Contact()
         {
             return this.View();
         }

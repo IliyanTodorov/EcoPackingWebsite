@@ -3,7 +3,9 @@ namespace EcoPacking.Data.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+
     using EcoPacking.Data.Common.Models;
 
     using Microsoft.AspNetCore.Identity;
@@ -20,17 +22,19 @@ namespace EcoPacking.Data.Models
             this.Reviews = new HashSet<Review>();
         }
 
+        [Required]
         public string FirstName { get; set; }
 
         public string MiddleName { get; set; }
 
+        [Required]
         public string LastName { get; set; }
 
         public string Alias { get; set; }
 
         public DateTime Birthday { get; set; }
 
-        public string Gender { get; set; }
+        public Gender? Gender { get; set; }
 
         [ForeignKey(nameof(Address))]
         public int? AddressId { get; set; }

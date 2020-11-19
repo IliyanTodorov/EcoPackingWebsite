@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EcoPacking.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20201117114543_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20201119093329_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -161,15 +161,17 @@ namespace EcoPacking.Data.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("FirstName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Gender")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("Gender")
+                        .HasColumnType("int");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
                     b.Property<string>("LastName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("LockoutEnabled")
@@ -426,7 +428,6 @@ namespace EcoPacking.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Color")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedOn")

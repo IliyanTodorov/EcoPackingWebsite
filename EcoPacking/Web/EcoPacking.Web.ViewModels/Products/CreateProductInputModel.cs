@@ -11,22 +11,22 @@
         [MaxLength(60)]
         public string Name { get; set; }
 
+        [MinLength(3)]
+        public string Color { get; set; }
+
+        public string Size { get; set; }
+
         [Required]
         [MinLength(15)]
-        public string Description { get; set; }
-
-        [DisplayName("Additianal Information")]
-        public string AdditionalInformation { get; set; }
+        public string Details { get; set; }
 
         [Range(0, 1000)]
-        public decimal Price { get; set; }
-
-        public ICollection<string> Sizes { get; set; }
+        public decimal UnitPrice { get; set; }
 
         [Range(1, 5000)]
         public int Quantity { get; set; }
 
-        public bool IsAvailable { get; set; }
+        public bool IsAvailable => this.Quantity > 0;
 
         public int CategoryId { get; set; }
     }
