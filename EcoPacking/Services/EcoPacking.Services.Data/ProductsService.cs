@@ -1,5 +1,7 @@
 ﻿namespace EcoPacking.Services.Data
 {
+    using System;
+    using System.IO;
     using System.Linq;
     using System.Threading.Tasks;
 
@@ -10,14 +12,16 @@
 
     public class ProductsService : IProductsService
     {
+        private readonly string[] allowedExtensions = new[] { "jpg", "png", "gif" };
         private readonly IDeletableEntityRepository<Product> productsRepository;
 
-        public ProductsService(IDeletableEntityRepository<Product> productsRepository)
+        public ProductsService(
+            IDeletableEntityRepository<Product> productsRepository)
         {
             this.productsRepository = productsRepository;
         }
 
-        public async Task CreateAsync(CreateProductInputModel input)
+        public async Task CreateAsync(CreateProductInputModel input, string imagePath)
         {
             var product = new Product
             {
@@ -29,9 +33,31 @@
                 CategoryId = input.CategoryId,
             };
 
-            foreach (var inputVariation in input.Variations)
+            // foreach (var inputVariation in input.Variations)
+            // {
+            //     product.Variations.Add(new Variation { Name = inputVariation.VariationName, ProductId = product.Id });
+            // }
+
+            // /wwwroot/images/products/{id}.{ext}
+            Directory.CreateDirectory($"{imagePath}/recipes/");
+            foreach (var image in input.Images)
             {
-                product.Variations.Add(new Variation { Name = inputVariation.VariationName, ProductId = product.Id });
+                var extension = Path.GetExtension(image.FileName).TrimStart('.');
+                if (!this.allowedExtensions.Any(x => extension.EndsWith(x)))
+                {
+                    throw new Exception($"Invalid image extension {extension}");
+                }
+
+                var dbImage = new Image
+                {
+                    Product = product,
+                    Extension = extension,
+                };
+                product.Images.Add(dbImage);
+
+                var physicalPath = $"{imagePath}/Products/{dbImage.Id}.{extension}";
+                using Stream fileStream = new FileStream(physicalPath, FileMode.Create);
+                await image.CopyToAsync(fileStream);
             }
 
             await this.productsRepository.AddAsync(product);

@@ -6,6 +6,6 @@
 
     public interface IProductsService
     {
-        Task CreateAsync(CreateProductInputModel input);
+        Task CreateAsync(CreateProductInputModel input, string imagePath);
     }
 }

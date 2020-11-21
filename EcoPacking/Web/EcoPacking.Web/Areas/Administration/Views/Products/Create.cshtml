@@ -5,9 +5,16 @@
     var categoryItems = this.Model.CategoriesItems.Select(x => new SelectListItem(x.Value, x.Key));
 }
 
-<form method="post" class="col-sm-6 offset-md-3 ">
+<form method="post" class="col-sm-6 offset-md-3" enctype="multipart/form-data">
     <h1 class="centered">@this.ViewData["Title"]</h1>
+    <hr />
     <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="Images"></label>
+        <input asp-for="Images" class="form-control" />
+        <span asp-validation-for="Images" class="text-danger"></span>
+    </div>
+
     <div class="form-group">
         <label asp-for="Name"></label>
         <input asp-for="Name" class="form-control" />
@@ -38,28 +45,10 @@
         <input asp-for="AvailableUnits" class="form-control" />
         <span asp-validation-for="AvailableUnits" class="text-danger"></span>
     </div>
-
-    @*<div id="VariationsContainer">
-        <label asp-for="Variations"></label>
-        <a class="btn btn-success" onclick="AddMoreVariations()">+</a>
-    </div>*@
-
     <div class="form-group">
         <label asp-for="CategoryId"></label>
         <select asp-for="CategoryId" class="form-control" asp-items="categoryItems"></select>
         <span asp-validation-for="CategoryId" class="text-danger"></span>
     </div>
-
     <input type="submit" class="btn btn-primary" />
 </form>
-
-@*@section Scripts {
-    <script>
-        var variationIndex = 0;
-        function AddMoreVariations() {
-            $("#VariationsContainer").
-                append("<div class='form-control'>Name: <input type='text' name='Variations[" + variationIndex + "].VariationName' /></div>");
-            variationIndex++;
-        }
-    </script>
-}*@

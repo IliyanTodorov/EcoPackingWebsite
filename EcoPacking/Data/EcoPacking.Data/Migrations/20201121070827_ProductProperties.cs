@@ -1,7 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
-
-namespace EcoPacking.Data.Migrations
+﻿namespace EcoPacking.Data.Migrations
 {
+    using Microsoft.EntityFrameworkCore.Migrations;
+
     public partial class ProductProperties : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)

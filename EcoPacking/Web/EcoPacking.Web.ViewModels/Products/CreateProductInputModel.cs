@@ -6,9 +6,13 @@
 
     using EcoPacking.Data.Models;
     using EcoPacking.Services.Mapping;
+    using Microsoft.AspNetCore.Http;
 
     public class CreateProductInputModel : IMapTo<Product>
     {
+        
+        public IEnumerable<IFormFile> Images { get; set; }
+
         [Required]
         [MinLength(4)]
         [MaxLength(60)]

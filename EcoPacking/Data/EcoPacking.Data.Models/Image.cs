@@ -14,7 +14,7 @@
         }
 
         [Required]
-        public string Extention { get; set; }
+        public string Extension { get; set; }
 
         [ForeignKey(nameof(User))]
         public string UserId { get; set; }

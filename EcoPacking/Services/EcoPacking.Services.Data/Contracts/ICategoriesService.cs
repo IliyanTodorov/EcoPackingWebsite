@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
-    using EcoPacking.Web.ViewModels.Categoies;
+
     using EcoPacking.Web.ViewModels.Categories;
 
     public interface ICategoriesService
