@@ -6,6 +6,6 @@
 
     public interface IProductsService
     {
-        Task CreteProduct(CreateProductInputModel input);
+        Task CreateAsync(CreateProductInputModel input);
     }
 }

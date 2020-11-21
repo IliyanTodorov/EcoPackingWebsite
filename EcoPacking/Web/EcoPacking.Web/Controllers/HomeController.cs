@@ -2,15 +2,28 @@
 {
     using System.Diagnostics;
 
+    using EcoPacking.Services.Data.Contracts;
     using EcoPacking.Web.ViewModels;
-
+    using EcoPacking.Web.ViewModels.Categoies;
     using Microsoft.AspNetCore.Mvc;
 
     public class HomeController : BaseController
     {
+        private readonly ICategoriesService categoriesService;
+
+        public HomeController(ICategoriesService categoriesService)
+        {
+            this.categoriesService = categoriesService;
+        }
+
         public IActionResult Index()
         {
-            return this.View();
+            var viewModel = new CategoriesListViewModel
+            {
+                Categories = this.categoriesService.GetAll<CategoryInListViewModel>(),
+            };
+
+            return this.View(viewModel);
         }
 
         public IActionResult ShopGrid()

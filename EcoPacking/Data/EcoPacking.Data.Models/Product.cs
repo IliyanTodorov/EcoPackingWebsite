@@ -12,19 +12,22 @@
         {
             this.Images = new HashSet<Image>();
             this.Reviews = new HashSet<Review>();
+            this.Variations = new HashSet<Variation>();
         }
 
         [Required]
         public string Name { get; set; }
 
-        public string Color { get; set; }
-
         [Required]
-        public string Size { get; set; }
+        public ICollection<Variation> Variations { get; set; }
 
-        public decimal UnitPrice { get; set; }
+        public decimal Price { get; set; }
 
-        public int UnitsInStock { get; set; }
+        public int UnitsPerCase { get; set; }
+
+        public int AvailableUnits { get; set; }
+
+        public bool AreThereAvailableUnits { get; set; }
 
         [Required]
         [MinLength(20)]

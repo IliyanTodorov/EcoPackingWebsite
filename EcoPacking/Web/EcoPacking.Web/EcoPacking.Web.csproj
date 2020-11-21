@@ -42,4 +42,8 @@
     <ProjectReference Include="..\EcoPacking.Web.Infrastructure\EcoPacking.Web.Infrastructure.csproj" />
     <ProjectReference Include="..\EcoPacking.Web.ViewModels\EcoPacking.Web.ViewModels.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\Products\" />
+  </ItemGroup>
 </Project>

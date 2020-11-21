@@ -21,9 +21,12 @@
             await dbContext.Categories.AddAsync(new Category { Name = "Wraps", });
             await dbContext.Categories.AddAsync(new Category { Name = "Rugs", });
             await dbContext.Categories.AddAsync(new Category { Name = "Towels", });
+            await dbContext.Categories.AddAsync(new Category { Name = "Food Takeaway Boxes", });
             await dbContext.Categories.AddAsync(new Category { Name = "Paper", });
-            await dbContext.Categories.AddAsync(new Category { Name = "Paper", });
+            await dbContext.Categories.AddAsync(new Category { Name = "Salad Boxes", });
+            await dbContext.Categories.AddAsync(new Category { Name = "Custom Printed Packaging", });
             await dbContext.Categories.AddAsync(new Category { Name = "Bulbs", });
+            await dbContext.Categories.AddAsync(new Category { Name = "Napkins", });
 
             await dbContext.SaveChangesAsync();
         }

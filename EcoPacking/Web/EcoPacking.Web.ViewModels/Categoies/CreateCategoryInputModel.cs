@@ -1,4 +1,4 @@
-﻿namespace EcoPacking.Web.ViewModels.Products
+﻿namespace EcoPacking.Web.ViewModels.Categories
 {
     using System.ComponentModel.DataAnnotations;
 
