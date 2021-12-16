@@ -124,7 +124,7 @@
                 <div class="wrap-input100 validate-input m-b-26">
                     <span asp-validation-for="Input.Gender" class="text-danger"></span>
                     <label class="label-input100" asp-for="Input.Gender"></label>
-                    <select class=" input-mini" asp-for="Input.Gender" asp-items="Html.GetEnumSelectList<Gender>()">
+                    <select class="form-control" asp-for="Input.Gender" asp-items="Html.GetEnumSelectList<Gender>()">
                         <option class="input100" selected="selected" value="">Please select</option>
                     </select>
                 </div>

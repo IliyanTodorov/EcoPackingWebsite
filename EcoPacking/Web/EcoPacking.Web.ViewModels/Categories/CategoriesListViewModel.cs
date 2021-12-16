@@ -1,4 +1,4 @@
-﻿namespace EcoPacking.Web.ViewModels.Categoies
+﻿namespace EcoPacking.Web.ViewModels.Categories
 {
     using System.Collections.Generic;
 

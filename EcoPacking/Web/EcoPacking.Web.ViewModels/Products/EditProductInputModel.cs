@@ -1,17 +1,12 @@
 ﻿namespace EcoPacking.Web.ViewModels.Products
 {
-    using System;
-    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
     using EcoPacking.Data.Models;
     using EcoPacking.Services.Mapping;
-    using Microsoft.AspNetCore.Http;
 
-    public class CreateProductInputModel : IMapTo<Product>
+    public class EditProductInputModel : IMapTo<Product>
     {
-        public IEnumerable<IFormFile> Images { get; set; }
-
         [Required]
         [MinLength(4)]
         [MaxLength(60)]
@@ -30,9 +25,5 @@
         public int AvailableUnits { get; set; }
 
         public bool IsAvailable => this.AvailableUnits > 0;
-
-        public int CategoryId { get; set; }
-
-        public IEnumerable<KeyValuePair<string, string>> CategoriesItems { get; set; }
     }
 }

@@ -1,9 +1,25 @@
 ﻿@model EcoPacking.Web.Areas.Administration.ViewModels.IndexViewModel
 @{
-    this.ViewData["Title"] = "Admin dashboard";
+    this.ViewData["Title"] = "Admin Dashboard";
     Layout = "_AdminLayout";
 }
 
-<h4>
-    Users: @this.Model.UsersCount
-</h4>
+<h1 class="text-center">Admin Area</h1>
+
+<div class="container">
+    <div class="row ml-5">
+        <div class="col-md-2 mr-4">
+            <h5>Manаge Products</h5>
+            <a class="btn btn-primary p-5 mr-5 mt-3" asp-controller="Products" asp-action="Create">Add Products</a>
+            <a class="btn btn-primary p-5 mr-5 mt-2" asp-controller="Products" asp-action="Edit">Edit Product</a>
+            <a class="btn btn-danger p-5 mr-5 mt-2" asp-controller="Products" asp-action="AllBikes">Delete Product</a>
+        </div>
+
+        <div class="col ml-5">
+            <h5>Information</h5>
+            <p>Users: @Model.UsersCount</p>
+        </div>
+    </div>
+   
+
+</div>

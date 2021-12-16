@@ -16,6 +16,8 @@
         [Required]
         public string Extension { get; set; }
 
+        public string RemoteImageUrl { get; set; }
+
         [ForeignKey(nameof(User))]
         public string UserId { get; set; }
 

@@ -4,7 +4,7 @@
 
     using EcoPacking.Services.Data.Contracts;
     using EcoPacking.Web.ViewModels;
-    using EcoPacking.Web.ViewModels.Categoies;
+    using EcoPacking.Web.ViewModels.Categories;
     using Microsoft.AspNetCore.Mvc;
 
     public class HomeController : BaseController
@@ -24,16 +24,6 @@
             };
 
             return this.View(viewModel);
-        }
-
-        public IActionResult ShopGrid()
-        {
-            return this.View();
-        }
-
-        public IActionResult Contact()
-        {
-            return this.View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

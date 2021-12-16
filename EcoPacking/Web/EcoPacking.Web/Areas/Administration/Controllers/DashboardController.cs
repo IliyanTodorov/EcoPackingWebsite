@@ -18,12 +18,7 @@
 
         public IActionResult Index()
         {
-            var viewModel = new IndexViewModel
-            {
-                UsersCount = this.usersRepository.All().Count(),
-            };
-
-            return this.View(viewModel);
+            return this.View(new IndexViewModel());
         }
     }
 }

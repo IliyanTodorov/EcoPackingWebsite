@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EcoPacking.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20201121144819_ChangePropertyName")]
-    partial class ChangePropertyName
+    [Migration("20201124150435_AddRemoteImageUrl")]
+    partial class AddRemoteImageUrl
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -352,6 +352,9 @@ namespace EcoPacking.Data.Migrations
                     b.Property<int?>("ProductId")
                         .HasColumnType("int");
 
+                    b.Property<string>("RemoteImageUrl")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
 
@@ -420,9 +423,6 @@ namespace EcoPacking.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
-
-                    b.Property<bool>("AreThereAvailableUnits")
-                        .HasColumnType("bit");
 
                     b.Property<int>("AvailableUnits")
                         .HasColumnType("int");
@@ -525,33 +525,6 @@ namespace EcoPacking.Data.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("Reviews");
-                });
-
-            modelBuilder.Entity("EcoPacking.Data.Models.Variation", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("Variation");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -766,17 +739,6 @@ namespace EcoPacking.Data.Migrations
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("EcoPacking.Data.Models.Variation", b =>
-                {
-                    b.HasOne("EcoPacking.Data.Models.Product", "Product")
-                        .WithMany("Variations")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Product");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("EcoPacking.Data.Models.ApplicationRole", null)
@@ -874,8 +836,6 @@ namespace EcoPacking.Data.Migrations
                     b.Navigation("Images");
 
                     b.Navigation("Reviews");
-
-                    b.Navigation("Variations");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,4 +1,4 @@
-﻿namespace EcoPacking.Web.ViewModels.Categoies
+﻿namespace EcoPacking.Web.ViewModels.Categories
 {
     using EcoPacking.Data.Models;
     using EcoPacking.Services.Mapping;

@@ -64,9 +64,9 @@
                                     </div>
                                     if (this.User.IsInRole(GlobalConstants.AdministratorRoleName))
                                     {
-                                        @*<div class="nav-item col-sm">
-                                            <a class="nav-link text-dark" asp-area="Administration" asp-controller="Dashboard" asp-action="Index" title="Admin">Admin</a>
-                                        </div>*@
+                                        <div class="nav-item col-sm">
+                                                <a class="nav-link text-dark" asp-area="Administration" asp-controller="Dashboard" asp-action="Index" title="Admin">Admin</a>
+                                            </div>
                                     }
                                     <div class="nav-item col-sm">
                                         <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@(this.Url.Action("Index", "Home", new { area = string.Empty }))">
@@ -94,8 +94,8 @@
                 <div class="col-lg-6">
                     <nav class="header__menu">
                         <ul>
-                            <li class="active"><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                            <li><a asp-area="" asp-controller="Home" asp-action="ShopGrid">Shop</a></li>
+                            <li class="active"><a asp-controller="Home" asp-action="Index">Home</a></li>
+                            <li><a asp-controller="Shop" asp-action="Index">Shop</a></li>
                             <li>
                                 <a href="#">Pages</a>
                                 <ul class="header__menu__dropdown">
@@ -106,7 +106,7 @@
                                 </ul>
                             </li>
                             <li><a href="">Blog</a></li>
-                            <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                            <li><a asp-area="" asp-controller="Contacts" asp-action="Index">Contact</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -126,7 +126,7 @@
         </div>
     </header>
     <!-- Header Section End -->
-
+    
     <partial name="_CookieConsentPartial" />
     <main role="main">
         @this.RenderBody()

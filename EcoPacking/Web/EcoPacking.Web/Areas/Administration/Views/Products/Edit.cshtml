@@ -1,0 +1,100 @@
+﻿@model EcoPacking.Web.ViewModels.Products.ProductsListViewModel;
+@using EcoPacking.Common
+
+@{
+    this.ViewData["Title"] = "Edit Products";
+}
+
+<h1 class="text-center">All Bikes</h1>
+
+<div>
+
+    <table class="table">
+        <thead>
+            <tr class="font-weight-bold">
+                <th scope="col">Image</th>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Category</th>
+                <th scope="col">Edit</th>
+                <th scope="col">undelete</th>
+                    <th scope="col">delete</th>
+            </tr>
+        </thead>
+
+        @foreach (var product in Model.Products)
+        {
+            <tbody>
+
+                <tr class="">
+                    <td><img src="@product.ImageUrl" style="max-height: 60px;" alt="image" /></td>
+                    <td>@product.Id</td>
+                    <td class="font-weight-bold">@product.Name</td>
+                    <td>@product.Price</td>
+                    <td>@product.CategoryName</td>
+                    <td>
+                        <a class="btn btn-success" asp-controller="Products" asp-action="EditProduct" asp-route-id="@product.Id">Edit Product</a>
+                    </td>
+                    @if (product.IsDeleted)
+                        {
+                            <td>
+                                <a class="btn btn-primary" asp-controller="Products" asp-action="UnDeleteProduct" asp-route-id="@product.Id">UnDelete</a>
+                            </td>
+                        }
+                        else
+                        {
+                            <td>
+                                <a class="btn btn-primary disabled" asp-controller="Products" asp-action="UnDeleteProduct" asp-route-id="@product.Id">UnDelete</a>
+                            </td>
+                        }
+                        @if (product.IsDeleted)
+                        {
+                            <td>
+                                <a class="btn btn-danger disabled" asp-controller="Products" asp-action="DeleteProduct" asp-route-id="@product.Id">Delete</a>
+                            </td>
+                        }
+                        else
+                        {
+                            <td>
+                                <a class="btn btn-danger" asp-controller="Products" asp-action="DeleteProduct" asp-route-id="@product.Id">Delete</a>
+                            </td>
+                        }
+
+                </tr>
+
+            </tbody>
+        }
+    </table>
+
+    <nav aria-label="...">
+        <ul class="pagination justify-content-lg-center">
+            <li class="page-item @if (!Model.HasPreviousPage) { <text>disabled</text> }">
+                <a class="page-link" asp-action="Edit" asp-route-id="@Model.PreviousPageNumber">Previous</a>
+            </li>
+            @for (int i = Model.PageNumber - 4; i < Model.PageNumber; i++)
+            {
+                if (i > 0)
+                {
+                    <li class="page-item"><a class="page-link" asp-action="Edit" asp-route-id="@i">@i</a></li>
+                }
+            }
+            <li class="page-item active" aria-current="page">
+                <span class="page-link">
+                    @Model.PageNumber
+                    <span class="sr-only">(current)</span>
+                </span>
+            </li>
+            @for (int i = Model.PageNumber + 1; i <= Model.PageNumber + 4; i++)
+            {
+                if (i <= Model.PagesCount)
+                {
+                    <li class="page-item"><a class="page-link" asp-action="Edit" asp-route-id="@i">@i</a></li>
+                }
+            }
+            <li class="page-item @if (!Model.HasNextPage) { <text>disabled</text> }">
+                <a class="page-link" asp-action="Edit" asp-route-id="@Model.NextPageNumber">Next</a>
+            </li>
+        </ul>
+    </nav>
+</div>
